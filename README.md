@@ -53,7 +53,8 @@ Para su configuración e instalación se agregan las siguientes líneas de códi
 "yes | sudo apt-get update", 
       "yes | sudo apt install puppetmaster",
       "git clone ${var.repo_git}",
-      "puppet apply ${var.repo_name}/${var.puppet_file}"
+      "cd ${var.repo_name}",
+      "puppet apply ${var.puppet_file}"
 ```
 
 Una vez se instala y configura Puppet master en la máquina se procede a aplicar el manifest de Puppet localmente con el siguiente comando.
