@@ -1,6 +1,6 @@
 # Virtual Server - Aprovisionamiento y configuración con Terraform y Puppet :cloud:
 
-En esta guía encontrará una descripción detallada sobre el aprovisionamiento de una VSI en IBM cloud mediante Schematics, integrado con Puppet el cual es un gestor de configuraciones
+En esta guía encontrará una descripción detallada sobre el aprovisionamiento de una VSI en IBM cloud mediante Schematics y la configuración de Apache en esta, integrando Terraform con Puppet el cual es un gestor de configuraciones.
 
 
 ### Indice:
@@ -15,7 +15,7 @@ En esta guía encontrará una descripción detallada sobre el aprovisionamiento 
 
 ## 1. Archivos Terraform 
 
-Terraform es una herramienta de aprovisionamiento de infraestructura que utiliza aprovisionadores, en este caso se hace uso del aprovisionador de ejecución remota para correr un conjunto de comandos en línea en la máquina recién creada y, de esta forma, instalar un chef workstation y automatizar la creación de un servidor tomcat.
+Terraform es una herramienta de aprovisionamiento de infraestructura que utiliza aprovisionadores, en este caso se hace uso del aprovisionador de ejecución remota para correr un conjunto de comandos externos de manera remota en la máquina recién creada. De esta forma se configura Puppet Master y se automatiza la creación de un servidor Apache HTTP Server en la maquina.
 
 ### Archivos :bookmark_tabs:
 
@@ -43,6 +43,9 @@ El aprovisionamiento de un VSI :
 | **memory**  | Memoria RAM de la VSI **Gigas de memoria RAM * 1024** ---- EJ : _2 Gb = 2048_ / _10 Gb = 10240_|z
 | **ssh_public_key**  | Llave publica generada. Mas información: https://www.ssh.com/ssh/keygen/ |
 | **private_key**  | Llave privada generada. Mas información: https://www.ssh.com/ssh/keygen/ |
+| **repo_git**  | Dirección URL del repositorio en GitHub que contiene el archivo MANIFEST de configuración |
+| **repo_name**  | Nombre del repositorio que contiene el MANIFEST de configuración Puppet |
+| **puppet_file**  | Nombre del archivo MANIFEST con extensión **.pp** de la configuración Puppet |
 
 ## 2. Configuración de Puppet
 
